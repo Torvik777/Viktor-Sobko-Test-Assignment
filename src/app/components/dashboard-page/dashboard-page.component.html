@@ -1,5 +1,50 @@
 <p>dashboard-page works!</p>
+
 <div class="dashboard-header">
     <button pButton type="button" label="Logout" icon="pi pi-sign-out" class="p-button-secondary" (click)="onLogout()"
         [loading]="auth.loading()" [disabled]="auth.loading()"></button>
 </div>
+
+<p-card header="Presence">
+    <div class="summary">
+        <div><b>All tabs:</b> {{ onlineTabsCount() }}</div>
+        <div><b>Active tabs:</b> {{ activeTabsCount() }}</div>
+    </div>
+
+    @if (error()) {
+    <div class="error">
+        {{ error() }}
+    </div>
+    }
+
+    <p-divider></p-divider>
+
+    @for (d of devices(); track d.tabs) {
+    <div class="device-title">
+        <b>Device:</b> {{ d.deviceId }}
+    </div>
+
+    <div class="tab-list">
+        @for (t of d.tabs; track t.tab_id) {
+        <div class="tab-row" [class.current]="t.isCurrent">
+            <div class="left">
+                <div><b>Tab:</b> {{ t.tab_id }}</div>
+                <div><b>State:</b> {{ t.state }}</div>
+                <div>
+                    <b>Last seen:</b>
+                    {{ t.last_seen | date:'medium' }}
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="ua">
+                    <b>User agent:</b> {{ t.user_agent }}
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <p-divider></p-divider>
+    }
+</p-card>
