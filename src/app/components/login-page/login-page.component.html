@@ -1,0 +1,29 @@
+
+<div class="content">
+
+
+    <form [formGroup]="form" (ngSubmit)="onSignIn()" class="login-form">
+        <div class="field">
+            <label for="email">Email</label>
+            <input pInputText id="email" type="email" formControlName="email" placeholder="you@example.com" />
+        </div>
+
+
+        <div class="field">
+            <label for="password">Password</label>
+            <p-password id="password" formControlName="password" [feedback]="false" toggleMask
+                placeholder="Password"></p-password>
+        </div>
+
+
+
+        <div class="actions">
+            <button pButton type="submit" label="Sign in" icon="pi pi-sign-in"
+                [disabled]="form.invalid || auth.loading()" [loading]="auth.loading()"></button>
+
+            <button pButton type="button" label="Sign up" icon="pi pi-user-plus" class="p-button-secondary"
+                [disabled]="form.invalid || auth.loading()" (click)="onSignUp()"></button>
+        </div>
+    </form>
+
+    </div>

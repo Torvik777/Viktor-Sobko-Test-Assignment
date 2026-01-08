@@ -1,0 +1,1 @@
+:host{display:flex;align-items:center;justify-content:center;height:100dvh}.login-card{max-width:300px;margin:10vh auto}.login-form{display:flex;flex-direction:column;gap:1rem}.field{display:flex;flex-direction:column;gap:.25rem;width:400px}.actions{display:flex;gap:.75rem;justify-content:space-between}

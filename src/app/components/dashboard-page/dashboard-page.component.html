@@ -1,0 +1,5 @@
+<p>dashboard-page works!</p>
+<div class="dashboard-header">
+    <button pButton type="button" label="Logout" icon="pi pi-sign-out" class="p-button-secondary" (click)="onLogout()"
+        [loading]="auth.loading()" [disabled]="auth.loading()"></button>
+</div>
